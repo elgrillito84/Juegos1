@@ -46,11 +46,21 @@ while running:
 
     xc1 += speed_x
     yc2 += speed_y
+    # Si choca con el borde, se cambia la dirección
     if xc1 > 1700 or xc1 < 0:
         speed_x = speed_x * -1
     if yc2 > 900 or yc2 < -75:
         speed_y = speed_y * -1
-
+    #Si choca con el borde, se para (experimental)
+    if xc1==1700 and  yc2==900:
+        running = False
+    elif xc1==0 and  yc2==0:
+        running = False
+    elif xc1==0 and  yc2==900:
+        running = False
+    elif xc1==1700 and  yc2==0:
+        running = False
+    
     # Dibujar
     screen.fill(WHITE)
     screen.blit(dvd_escalada, (xc1, yc2))
